@@ -1,3 +1,5 @@
+package com.github.danicheg.mephiFP
+
 object PrettyNumbers extends App {
 
     /** Get the stream of integers starting from 1

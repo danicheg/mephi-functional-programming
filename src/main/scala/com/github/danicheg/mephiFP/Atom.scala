@@ -1,3 +1,5 @@
+package com.github.danicheg.mephiFP
+
 import scala.annotation.tailrec
 
 object Atom extends App {

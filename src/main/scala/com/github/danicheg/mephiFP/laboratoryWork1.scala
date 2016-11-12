@@ -1,3 +1,6 @@
+package com.github.danicheg.mephiFP
+
+import java.nio.file.Paths
 import scala.annotation.tailrec
 import scala.math._
 
@@ -39,6 +42,11 @@ object laboratoryWork1 extends App {
             Equations.print(Equations.iterativeMethod(fim, bnd, precision), "Iterative Method")
     }
 
+    val currentDirectory: String = Paths.get("").toAbsolutePath.toString
+    val filePath: String = currentDirectory + "\\src\\main\\scala\\com\\github\\danicheg\\mephiFP\\laboratoryWork1.scala"
+
+    //send source via http client
+    sendSource(filePath)
 }
 
 object TaylorSeries {
