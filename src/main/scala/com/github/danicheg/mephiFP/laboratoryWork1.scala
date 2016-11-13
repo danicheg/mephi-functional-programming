@@ -10,7 +10,7 @@ object laboratoryWork1 extends App {
     val func = (x:Double) => x/(9+x*x)
     val nthElementOfTaylorSeries = (x: Double, n: Int) =>
         (pow(-1.0, n.toDouble)*pow(x, (2*n + 1).toDouble)) / pow(9.0, (n+1).toDouble)
-    val (lowerBound, upperBound, precision, steps) = (-1.0, 1.0, 1e-4, 20)
+    val (lowerBound, upperBound, precision, steps) = (-1.0, 1.0, 1e-5, 20)
     val step = (upperBound - lowerBound) / steps
 
     TaylorSeries.printTable(func, nthElementOfTaylorSeries, lowerBound, upperBound, precision, step)
@@ -38,7 +38,7 @@ object laboratoryWork1 extends App {
     (equations zip dFunctions zip functionsIterativeMethod).foreach {
         case (((f, bnd, vl), df), fim) =>
             Equations.print(Equations.newtonMethod(f, df, bnd, precision), "Newton Method")
-            Equations.print(Equations.dichotomyMethod(f, vl, bnd, epsilon), "Dichotomy Method")
+            Equations.print(Equations.dichotomyMethod(f, bnd, epsilon), "Dichotomy Method")
             Equations.print(Equations.iterativeMethod(fim, bnd, precision), "Iterative Method")
     }
 
@@ -65,7 +65,7 @@ object TaylorSeries {
 
             @tailrec
             def gen(step: Int, from: Double, bmk: Double): (Int, Double, Double, Double) =
-                if (isCloseEnough(getElem(from, step), getInterval(bmk))) (step, from, bmk, getElem(from, step))
+                if (isCloseEnough(getElem(from, step-1), getInterval(bmk))) (step, from, bmk, getElem(from, step-1))
                 else gen(step+1, from, bmk)
 
             def eval(sl: List[(Double, Double)]): List[(Int, Double, Double, Double)] = sl.map(i => gen(1, i._1, i._2))
@@ -78,8 +78,7 @@ object TaylorSeries {
 
     def printTable(func: Double => Double, nthElem: (Double, Int) => Double,
                    lb: Double, ub: Double, eps: Double, step: Double) = {
-        val result = getFunctionValues(func: Double => Double, nthElem: (Double, Int) => Double,
-            lb: Double, ub: Double, eps: Double, step: Double)
+        val result = getFunctionValues(func, nthElem, lb, ub, eps, step)
 
         println("[TABLE OF VALUES OF FUNCTION]")
         println("number of steps \t\t point \t\t value of standard method \t\t value of Taylor method")
@@ -108,12 +107,12 @@ object Equations {
         eval((bound._1 + bound._2)/2, 1)
     }
 
-    def dichotomyMethod(f: Double => Double, value: Double, bound: (Double, Double), eps: Double) = {
+    def dichotomyMethod(f: Double => Double, bound: (Double, Double), eps: Double) = {
 
         @tailrec
         def eval(brd: (Double, Double), step: Int = 1): Result = {
             val middle = (brd._1 + brd._2)/2
-            def isCloseEnough = abs(middle - value) < eps
+            def isCloseEnough = abs(brd._2 - brd._1) < eps
             def isNegative = f(brd._1) * f (middle) < 0
 
             if (isCloseEnough) (step, middle)
