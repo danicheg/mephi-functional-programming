@@ -1,6 +1,9 @@
-package com.github.danicheg.mephiFP
+package com.github.danicheg.mephiFP.labs
 
 import java.nio.file.Paths
+
+import com.github.danicheg.mephiFP._
+
 import scala.annotation.tailrec
 import scala.math._
 

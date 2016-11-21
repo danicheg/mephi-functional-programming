@@ -1,4 +1,4 @@
-import com.github.danicheg.mephiFP.PrettyNumbers._
+import com.github.danicheg.mephiFP.others.PrettyNumbers._
 
 import org.specs2.mutable.Specification
 

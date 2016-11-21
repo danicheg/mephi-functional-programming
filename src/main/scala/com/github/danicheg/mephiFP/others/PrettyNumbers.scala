@@ -1,4 +1,4 @@
-package com.github.danicheg.mephiFP
+package com.github.danicheg.mephiFP.others
 
 object PrettyNumbers extends App {
 

@@ -17,7 +17,7 @@ package object mephiFP {
         println(s"${content.getOrElse("false")}")
 
         implicit val httpClient = new ApacheHttpClient
-        val email = "e.danicheg@yandex.ru"
+        val email = "---"
 
         val response: HttpResponse = Await.result(POST(url(http, "91.239.142.110", 13666) / "lab1")
             .setHeaders("Content-Type" -> "application/x-www-form-urlencoded")
