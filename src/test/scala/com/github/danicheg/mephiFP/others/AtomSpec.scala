@@ -1,5 +1,6 @@
-import com.github.danicheg.mephiFP.others.Atom._
+package com.github.danicheg.mephiFP.others
 
+import com.github.danicheg.mephiFP.others.Atom._
 import org.specs2.mutable.Specification
 
 class AtomSpec extends Specification {

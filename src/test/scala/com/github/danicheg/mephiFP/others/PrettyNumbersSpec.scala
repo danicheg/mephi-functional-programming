@@ -1,5 +1,6 @@
-import com.github.danicheg.mephiFP.others.PrettyNumbers._
+package com.github.danicheg.mephiFP.others
 
+import com.github.danicheg.mephiFP.others.PrettyNumbers._
 import org.specs2.mutable.Specification
 
 class PrettyNumbersSpec extends Specification {

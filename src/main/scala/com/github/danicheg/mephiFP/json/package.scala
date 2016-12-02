@@ -1,6 +1,7 @@
 package com.github.danicheg.mephiFP
 
 package object json {
+
     sealed trait JsonValue
 
     case class JsonObject(entries: Map[String, JsonValue]) extends JsonValue
@@ -9,7 +10,7 @@ package object json {
 
     case class JsonString(str: String) extends JsonValue
 
-    case class JsonNumber(num: BigDecimal) extends JsonValue
+    case class JsonNumber(num: Double) extends JsonValue
 
     case class JsonBoolean(value: Boolean) extends JsonValue
 
